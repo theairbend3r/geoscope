@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script> -->
+
+<script>
+    function showlocation() {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            callback(position.coords.latitude, position.coords.longitude);
+        });
+    }
+
+    function callback(lat, lon) {
+        document.getElementById('latitude').value = lat;
+        document.getElementById('longitude').value = lon;
+    }
+</script>
+
+
+<div class="container">
+    <h2 class="text-center"> Upload Image </h2>
+
+    <form action="{{ url_for('upload_image') }}" method="POST" enctype="multipart/form-data">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputFName">First Name</label>
+                <input type="text" name="first_name" class="form-control" placeholder="First Name" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputLName">Last Name</label>
+                <input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputPhone">Phone Number</label>
+                <input type="number" name="phone" class="form-control" placeholder="Phone Number" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPin">Address Pin Code </label>
+                <input type="text" name="pin_code" class="form-control" placeholder="Pin Code" required>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAge">Age</label>
+                <input type="number" name="age" class="form-control" placeholder="Age">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputCondition">Condition </label>
+                <select name="med_cond" class="form-control" placeholder="Medical Condition">
+                    <option selected>Normal</option>
+                    <option>Fracture</option>
+                    <option>Internal Bleeding</option>
+                    <option>External Bleeding</option>
+                    <option>Infection</option>
+                    <option>Dead</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputLat">Latitude</label>
+                <input type="number" name="lat" id="latitude" step=any readonly class="form-control" placeholder="Latitude">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputLong">Longitude </label>
+                <input type="number" name="long" id="longitude" step=any readonly class="form-control" placeholder="Longitude">
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary" onclick="javascript:showlocation()">Get Location</button>
+            </div>
+            <div class="col-sm-4">
+                <input type="file" name="file" accept="image/jpg, image/jpeg" required> <br> <br>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </div>
+        </div>
+    </form>
+
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+body {
+    background-color: #1abc9c;
+    color: #ffffff;
+}
+
+footer {
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
+    background-color: teal;
+}
+
+.gallery_product {
+    margin-bottom: 30px;
+}
+
+.modal {
+    color: #000000;
+}
+
+#map {
+    height: 180px;
+}
